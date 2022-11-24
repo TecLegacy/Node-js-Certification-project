@@ -38,14 +38,14 @@ module.exports = class UserModel {
     // return;
   }
 
-  static fetchAll() {
+  static fetchAll(cb) {
     // return saveData;
     fs.readFile(filePath, (err, fileContent) => {
       if (err) {
         // return empty data if no data found
-        return [];
+        return cb([]);
       }
-      return JSON.parse(fileContent);
+      return cb(JSON.parse(fileContent));
     });
   }
 };
