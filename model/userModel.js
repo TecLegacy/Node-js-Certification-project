@@ -18,7 +18,7 @@ module.exports = class UserModel {
     fs.readFile(filePath, (err, fileContent) => {
       console.log('error from userModel', err);
 
-      const product = [];
+      let product = [];
       //if no err it will be NULL
       if (!err) {
         //no error  we want to read data from file
