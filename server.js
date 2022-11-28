@@ -32,5 +32,3 @@ app.use(require('./controller/error'));
 
 //create server
 app.listen(3003);
-
-//.

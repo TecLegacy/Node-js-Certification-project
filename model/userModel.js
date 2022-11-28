@@ -40,6 +40,7 @@ module.exports = class UserModel {
         console.log(err);
       });
     });
+  }
 
   //save User data
   // save() {
