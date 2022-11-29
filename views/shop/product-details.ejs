@@ -28,9 +28,9 @@
                     <!-- Anchor tag is used to pass data in url
                         You cannot pass data inside Button
                     -->
-                    <a href="/product-details/<%=productId %>" class="btn tag">Details</a> 
+                    <a href="/product-details/<%=item.productId %>" class="btn tag">Details</a> 
                     <form action="/add-to-cart" method="POST" class="btn-up"> 
-                        <button class="btn">Add to Cart</button>     
+                        <button class="btn"><%= item.title%></button>     
                     </form>
                  </div>
                 
