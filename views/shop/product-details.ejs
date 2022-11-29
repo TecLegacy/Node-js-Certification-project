@@ -1,33 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= title%></title> -->
-
-    
-    <%- include('includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/product.css" />
   </head>
 
   <body>
-    <header class="main-header">
-      <nav class="main-header__nav">
-        <ul class="main-header__item-list">
-          <li class="main-header__item">
-            <a href="/" class="<%= path==='Shop'?'active ':'' %>">Shop</a>
-          </li>
-          <li class="main-header__item">
-            <a href="/products" class="<%= path==='product'?'active ':'' %>"
-              >Add Products</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('../includes/nav.ejs') %>
     <main>
       <% if(info.length>0){ %>
       <div class="grid">
@@ -46,9 +23,17 @@
                   <p class="product__description">
                     A very interesting book to become a better developer
                   </p>
-                  <div class="card__actions">
-                    <button class="btn">Add to Cart</button>
-                  </div>
+                
+                 <div class="card__actions">
+                    <!-- Anchor tag is used to pass data in url
+                        You cannot pass data inside Button
+                    -->
+                    <a href="/product-details/<%=productId %>" class="btn tag">Details</a> 
+                    <form action="/add-to-cart" method="POST" class="btn-up"> 
+                        <button class="btn">Add to Cart</button>     
+                    </form>
+                 </div>
+                
                 </div>
               </div>
             </h1>

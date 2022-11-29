@@ -8,7 +8,11 @@ const UserModal = require('../model/userModel'); // with model storing data
 
 //GET request to Products
 const productGet = (req, res) => {
-  res.sendFile(path.join(root, 'views', 'add-product.html'));
+  // res.sendFile(path.join(root, 'views', 'add-product.html'));
+  res.render('shop/add-product.ejs', {
+    path: 'products',
+    title: 'Add Products',
+  });
 };
 
 //POST Requst to products

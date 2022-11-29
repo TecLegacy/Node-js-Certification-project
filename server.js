@@ -22,7 +22,7 @@ app.use(express.static(path.join(root, 'public')));
 
 //Routes homePage
 app.use('/products', router.productsRouter);
-app.get('/', shopRouter);
+app.use('/', shopRouter);
 
 //404 page
 // app.use((req, res) => {

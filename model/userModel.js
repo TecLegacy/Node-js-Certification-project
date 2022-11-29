@@ -19,8 +19,9 @@ const filePath = path.join(root, 'data', 'user.json');
 // };
 
 const getProductsFromFile = cb => {
-  fs.readFile(p, (err, fileContent) => {
+  fs.readFile(filePath, (err, fileContent) => {
     if (err) {
+      console.error(err);
       cb([]);
     } else {
       cb(JSON.parse(fileContent));
@@ -34,10 +35,12 @@ module.exports = class UserModel {
   }
 
   save() {
+    // Creating a product id
+    this.productId = Math.random().toString();
     getProductsFromFile(products => {
       products.push(this);
-      fs.writeFile(p, JSON.stringify(products), err => {
-        console.log(err);
+      fs.writeFile(filePath, JSON.stringify(products), err => {
+        console.error(err);
       });
     });
   }

@@ -15,7 +15,29 @@ shopRouter.get('/', (req, res) => {
     console.log('product Out', productOut);
 
     //EJS
-    res.render('shop', { info: productOut, title: 'Shop', path: 'Shop' });
+    res.render('shop/shop.ejs', {
+      info: productOut,
+      title: 'Shop',
+      path: 'Shop',
+    });
+  });
+});
+
+//Product-details Page
+shopRouter.get('/product-details', (req, res, next) => {
+  console.log('lol');
+
+  UserModal.fetchAll(productOut => {
+    // const test=JSON.parse(productOut)
+    console.log('productOut', productOut.productId);
+
+    res.render('shop/product-details.ejs', {
+      title: 'product-details',
+      path: 'products-details',
+      // id: productOut.productId,
+      productId: productOut.productId,
+      info: productOut,
+    });
   });
 });
 

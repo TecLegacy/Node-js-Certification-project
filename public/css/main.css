@@ -78,18 +78,18 @@ main {
   width: 100%;
 }
 
-.card__image img {
+.crd__image img {
   width: 100%;
 }
 
 .card__actions {
-    padding: 1rem;
-    text-align: center;
+  padding: 1rem;
+  text-align: center;
 }
 
 .card__actions button,
 .card__actions a {
-    margin: 0 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .btn {
@@ -105,4 +105,13 @@ main {
 .btn:active {
   background-color: #00695c;
   color: white;
+}
+
+/* anchor tag  */
+.tag {
+  text-decoration: none;
+}
+
+.btn-up {
+  padding-top: 10px;
 }
