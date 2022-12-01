@@ -79,4 +79,14 @@ module.exports = class UserModel {
       return cb(JSON.parse(fileContent));
     });
   }
+
+  // Fetch single Product
+  static fetchSingleProduct(id, cb) {
+    fs.readFile(filePath, (err, fileContent) => {
+      const products = JSON.parse(fileContent);
+
+      const singleProduct = products.find(p => p.productId === id);
+      cb(singleProduct);
+    });
+  }
 };
