@@ -1,0 +1,3 @@
+work on design 
+refactor code
+work on product-details ( single product view ) <- style in mid
