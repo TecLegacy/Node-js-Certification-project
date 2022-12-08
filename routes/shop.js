@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-const Cart = require('../model/cartModel');
+// const Cart = require('../model/cartModel');
 const Model = require('../model/userModel');
 
 const filePath = path.dirname(require.main.filename);
@@ -19,7 +19,7 @@ shopRouter.get('/', (req, res) => {
 
   //Using Model to render data
   UserModal.fetchAll(productOut => {
-    console.log('product Out', productOut);
+    // console.log('product Out', productOut);
 
     //EJS
     res.render('shop/shop.ejs', {
@@ -52,7 +52,7 @@ shopRouter.get('/product-details/:prodId', (req, res) => {
   // });
 
   Model.fetchSingleProduct(prodId, single => {
-    console.log('single', single);
+    // console.log('single', single);
 
     res.render('shop/singleProduct.ejs', {
       path: 'products-details',
@@ -68,16 +68,17 @@ shopRouter.get('/product-details/:prodId', (req, res) => {
 shopRouter.get('/cart', (req, res) => {
   //
   console.log('keshav');
-  Cart.countProduct('10');
-  res.render('shop/cart.ejs', { title: 'Cart', path: 'cart' });
+
+  // Cart.countProduct('10');
+  // res.render('shop/cart.ejs', { title: 'Cart', path: 'cart' });
 });
 
-//Cart POST = add item to cart
-shopRouter.post('/cart', (req, res) => {
-  //Handle productId from post Request via input from shop.ejs
-  const productId = req.body.productId;
+// //Cart POST = add item to cart
+// shopRouter.post('/cart', (req, res) => {
+//   //Handle productId from post Request via input from shop.ejs
+//   const productId = req.body.productId;
 
-  console.log(productId);
-});
+//   console.log(productId);
+// });
 
 module.exports = shopRouter;

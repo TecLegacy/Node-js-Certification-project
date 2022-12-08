@@ -1,50 +1,27 @@
-const fs = require('fs');
+/** Cart Stucture
+ * cart [{product:[{id:1,quantity:2}],totalPrice:'tp+quantity*idprice'}]
+ */
+
 const path = require('path');
+const fs = requir('fs');
+
 const root = require('../utils/parentDirectory');
 
 const p = path.join(root, 'data', 'cart.json');
 
-//TESTING LOGIC
 module.exports = class Cart {
-  /**
-   * [{product:[{id:123,qty:2},{id:345,qty:1}]
-   * }]
-   */
-  static countProduct(id) {
-    //create cart in a sperate file
+  static getCart(id) {
+    let cart = {
+      product: [],
+      totalPrice: '',
+    };
+    //Read -> Append/Replace -> Write in cart
     fs.readFile(p, (err, fileContent) => {
-      let cart = {
-        product: [],
-        totalPrice: '',
-      };
-      //To avoid error -> create a file
       if (!err) {
-        cart = JSON.parse(fileContent); //fetch old content from file
+        cart = JSON.parse(fileContent);
       }
-      //check if product already exists
-      const productExists = cart.product.findIndex(p => p.productId === id);
-      if (productExists) {
-        //update the product
-        const updatedCart = {
-          id,
-          qty: 1,
-        };
-        cart.product[productExists] = updatedCart;
-        //updated price
-        cart.totalPrice = totalPrice * updatedCart.qty;
-      } else {
-        newProduct = {
-          id,
-          qty: 1,
-        };
-        cart.product.push(newProduct);
-      }
-    });
-
-    fs.writeFile(p, JSON.stringify(cart), err => {
-      console.error(err);
+      //Cart Exists
+      const cartExists = cart.product.findIndex(curr => id === curr.id);
     });
   }
-
-  // Check if product already exists
 };
