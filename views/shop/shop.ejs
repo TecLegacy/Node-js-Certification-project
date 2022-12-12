@@ -36,30 +36,31 @@
         <% info.forEach((item)=>{ %>
         <article class="card product-item">
           <header class="card__header">
-            <h1 class="product">
+            <h1 class="product__title">
               <%= item.title%>
-              <div class="card__image">
-                <img
-                  class="imageStyle"
-                  src="<%=item.image%>"
-                  alt="<%= item.title%>"
-                />
-                <div class="card__content">
-                  <h2 class="product__price">$<%=item.price%></h2>
-                  <p class="product__description">
-                   <%= item.description%>
-                  </p>
-                  <div class="card__actions">
-                    <form method="POST" action="/add-to-cart">
-                        <!-- passing data in hidden input field  -->
-                        <input type="hidden" name="productId" value="<%= item.productId%>">
-                      <button class="btn">Add to Cart</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
+             
             </h1>
           </header>
+          <div class="card__image">
+            <img
+            
+              src="<%=item.image%>"
+              alt="<%= item.title%>"
+            />
+            <div class="card__content">
+              <h2 class="product__price">$<%=item.price%></h2>
+              <p class="product__description">
+               <%= item.description%>
+              </p>
+              <div class="card__actions ">
+                <form method="POST" action="/add-to-cart">
+                    <!-- passing data in hidden input field  -->
+                    <input type="hidden" name="productId" value="<%= item.productId%>">
+                  <button class="btn">Add to Cart</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </article>
         <% }) %>
       </div>

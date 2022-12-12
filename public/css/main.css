@@ -93,6 +93,10 @@ main {
 .card__actions a {
   margin: 0 0.25rem;
 }
+.center {
+  display: flex;
+  justify-content: space-between;
+}
 
 .btn {
   font: inherit;
@@ -112,8 +116,5 @@ main {
 /* anchor tag  */
 .tag {
   text-decoration: none;
-}
-
-.btn-up {
-  padding-top: 10px;
+  padding: 0 0.2rem;
 }
