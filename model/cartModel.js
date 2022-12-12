@@ -16,34 +16,36 @@ module.exports = class Cart {
     fs.readFile(p, (err, fileContent) => {
       let cart = {
         products: [],
-        totalPrice: '',
+        totalPrice: null,
       };
       if (!err) {
         cart = JSON.parse(fileContent);
       }
 
-      const cartExistIndex = cart.product.findIndex(curr => curr.id === id);
-      const cartExist = cart.product[cartExistIndex];
-      let updatedCart;
+      const cartExistIndex = cart.products.findIndex(curr => curr.id === id);
+      const productExist = cart.products[cartExistIndex];
+      let updatedProducts;
 
       //Increase quantity by 1
-      if (cartExist) {
-        updatedCart = { ...cartExist };
-        updatedCart.qnty += 1;
+      if (productExist) {
+        updatedProducts = { ...productExist };
+        // updatedProducts.qnty += 1;
+        updatedProducts.qnty = updatedProducts.qnty + 1;
 
         cart.products = [...cart.products]; // <- WHY ? is this needed
-        cart.products[cartExistIndex] = updatedCart;
+        cart.products[cartExistIndex] = updatedProducts;
       } else {
-        updatedCart = {
+        updatedProducts = {
           id,
           qnty: 1,
         };
-        cart.products = [...cart.products, updatedCart];
+        cart.products = [...cart.products, updatedProducts];
       }
-      cart.totalPrice += articlePrice;
+      // cart.totalPrice += +articlePrice;
+      cart.totalPrice = cart.totalPrice + +articlePrice;
 
       //save cart back to FS
-      fs.writeFile(p, JSON);
+      fs.writeFile(p, JSON.stringify(cart), err => console.error(err));
     });
   }
 };

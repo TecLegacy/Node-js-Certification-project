@@ -5,7 +5,7 @@ const path = require('path');
 // const Cart = require('../model/cartModel');
 const Model = require('../model/userModel');
 
-const filePath = path.dirname(require.main.filename);
+const Cart = require('../model/cartModel');
 
 const shopRouter = express.Router();
 
@@ -57,6 +57,7 @@ shopRouter.get('/product-details/:prodId', (req, res) => {
     res.render('shop/singleProduct.ejs', {
       path: 'products-details',
       title: single.title,
+      prodId,
     });
   });
 
@@ -65,9 +66,20 @@ shopRouter.get('/product-details/:prodId', (req, res) => {
 });
 
 //Cart
-shopRouter.get('/cart', (req, res) => {
-  //
-  console.log('keshav');
+shopRouter.get('/add-to-cart', (req, res) => {
+  res.send('<h1>Cart</h1>');
+});
+
+shopRouter.post('/add-to-cart', (req, res) => {
+  const prodId = req.body.productId;
+
+  UserModal.fetchSingleProduct(prodId, product => {
+    console.log('product', product);
+
+    Cart.addCart(prodId, 302);
+  });
+
+  res.redirect('/add-to-cart');
 
   // Cart.countProduct('10');
   // res.render('shop/cart.ejs', { title: 'Cart', path: 'cart' });
