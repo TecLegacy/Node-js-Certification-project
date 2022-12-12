@@ -30,8 +30,11 @@ const getProductsFromFile = cb => {
 };
 
 module.exports = class UserModel {
-  constructor(title) {
+  constructor(title, image, description, price) {
     this.title = title;
+    this.image = image;
+    this.description = description;
+    this.price = price;
   }
 
   save() {

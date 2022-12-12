@@ -9,7 +9,7 @@ const UserModal = require('../model/userModel'); // with model storing data
 //GET request to Products
 const productGet = (req, res) => {
   // res.sendFile(path.join(root, 'views', 'add-product.html'));
-  res.render('shop/add-product.ejs', {
+  res.render('admin/add-product.ejs', {
     path: 'products',
     title: 'Add Products',
   });
@@ -19,7 +19,12 @@ const productGet = (req, res) => {
 const productPost = (req, res) => {
   //body parser - urlencoded to true
 
-  const userData = new UserModal(req.body.title);
+  const price = req.body.price;
+  const title = req.body.title;
+  const image = req.body.imageUrl;
+  const description = req.body.description;
+  // console.log(price, image, description, title);
+  const userData = new UserModal(title, image, description, price);
   userData.save();
 
   // userData.push({ title: req.body.title });
