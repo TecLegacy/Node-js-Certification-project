@@ -1,6 +1,4 @@
-const path = require('path');
-//parent driectory
-const root = require('../utils/parentDirectory');
+const Model = require('../model/userModel');
 
 //Storing data
 const UserModal = require('../model/userModel'); // with model storing data
@@ -10,24 +8,34 @@ const UserModal = require('../model/userModel'); // with model storing data
 const productGet = (req, res) => {
   // res.sendFile(path.join(root, 'views', 'add-product.html'));
   res.render('admin/add-product.ejs', {
-    path: 'products',
-    title: 'Add Products',
+    path: 'add-products',
+    title: 'Add Product',
   });
 };
 
 //POST Requst to products
 const productPost = (req, res) => {
   //body parser - urlencoded to true
-
   const price = req.body.price;
   const title = req.body.title;
   const image = req.body.imageUrl;
   const description = req.body.description;
-  // console.log(price, image, description, title);
+
   const userData = new UserModal(title, image, description, price);
   userData.save();
 
-  // userData.push({ title: req.body.title });
   res.redirect('/');
 };
-module.exports = { productGet, productPost };
+
+const editGet = (req, res) => {
+  //Edit page is same as Add just input changes
+  Model.fetchAll(products => {
+    res.render('admin/product.ejs', {
+      path: 'products',
+      title: 'Edit Product',
+      info: products,
+    });
+  });
+};
+
+module.exports = { productGet, productPost, editGet };

@@ -3,10 +3,14 @@ const express = require('express');
 const productsRouter = express.Router();
 
 //controller POST and GET
-const { productGet, productPost } = require('../controller/product');
+const { productGet, productPost, editGet } = require('../controller/product');
 
-productsRouter.get('/', productGet);
+productsRouter.get('/add-product', productGet);
 
-productsRouter.post('/', productPost);
+productsRouter.post('/add-product', productPost);
+
+//EDIT products
+productsRouter.get('/products', editGet);
+// productsRouter.get('/edit-product',editPost)
 
 exports.productsRouter = productsRouter;

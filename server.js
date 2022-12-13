@@ -21,13 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(root, 'public')));
 
 //Routes homePage
-app.use('/products', router.productsRouter);
+app.use('/admin', router.productsRouter);
 app.use('/', shopRouter);
 
-//404 page
-// app.use((req, res) => {
-//   res.send('<h1>404 Page not found!</h1>');
-// });
 app.use(require('./controller/error'));
 
 //create server

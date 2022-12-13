@@ -5,5 +5,19 @@
     "description": "Complete React Course",
     "price": "30.99",
     "productId": "0.28061997220368107"
+  },
+  {
+    "title": "Node.js",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWaV_cvq_LoHsVmgqrk3DXS6oY2VLURSeI2g&usqp=CAU",
+    "description": "Advance Node.js Certification",
+    "price": "28.75",
+    "productId": "0.6661548872829499"
+  },
+  {
+    "title": "Next.js",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrzToP1RYU02lzlazAyRESWG8dAcr18pnOig&usqp=CAU",
+    "description": "The complete framework built upon React.js",
+    "price": "49.89",
+    "productId": "0.8517574986386462"
   }
 ]

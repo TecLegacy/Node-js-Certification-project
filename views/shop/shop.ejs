@@ -53,11 +53,8 @@
                <%= item.description%>
               </p>
               <div class="card__actions ">
-                <form method="POST" action="/add-to-cart">
-                    <!-- passing data in hidden input field  -->
-                    <input type="hidden" name="productId" value="<%= item.productId%>">
-                  <button class="btn">Add to Cart</button>
-                </form>
+                <!-- Inside a forloop you need to pass 2nd argument as object with prop -->
+                <%- include('../includes/add-to-cart.ejs',{item:item.productId}) %> 
               </div>
             </div>
           </div>
