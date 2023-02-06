@@ -33,13 +33,12 @@
               <!-- Anchor tag is used to pass data in url
                   You cannot pass data inside Button
               -->
-              <a href="/product-details/<%=item.productId %>" class="btn tag">
-               Details
-             </a> 
-
-              <%- include('../includes/add-to-cart.ejs',{item:item.productId}) %> 
+              <a href="/admin/products/<%= item.productId %>?edit=true" class="btn tag">Edit</a>
+              <form action="/admin/delete-product" method="POST">
+                  <input type="hidden" value="<%= item.productId %>" name="productId">
+                  <button class="btn" type="submit">Delete</button>
+              </form>
            </div>
-          
           </div>
         </article>
         <% }) %>
