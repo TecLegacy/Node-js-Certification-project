@@ -1,5 +1,7 @@
 const Model = require('../model/userModel');
 
+const UserKeshav = require('../model/testModal');
+
 //Storing data
 const UserModal = require('../model/userModel'); // with model storing data
 // const userData = []; //with variable storing data
@@ -24,6 +26,12 @@ const productPost = (req, res) => {
   const userData = new UserModal(title, image, description, price);
   userData.save();
 
+  // FIXME: remove it later
+  /**
+   * test keshav modal
+   */
+  const keshav = new UserKeshav(title, image, description, price);
+  keshav.save();
   res.redirect('/');
 };
 
