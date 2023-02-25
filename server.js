@@ -7,9 +7,12 @@ const router = require('./routes/products');
 
 //root directory
 const root = require('./utils/parentDirectory');
+// dotenv
+require('dotenv').config();
 
 const app = express();
 
+const port = process.env.PORT || 3003;
 //PUG
 app.set('view engine', 'ejs'); //defining template engine for express to know
 app.set('views', 'views'); //changing default view
@@ -27,4 +30,4 @@ app.use('/', shopRouter);
 app.use(require('./controller/error'));
 
 //create server
-app.listen(3003);
+app.listen(port);
